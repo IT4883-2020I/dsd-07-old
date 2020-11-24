@@ -63,7 +63,7 @@ export const sidebarMenu = [
   },
   {
     key: 'GeneralStatistic',
-    heading: 'Báo cáo thống kê',
+    heading: 'Thống kê',
     icon: 'fas fa-chart-line',
     route: '/statistic',
     subMenu: [
@@ -96,6 +96,20 @@ export const sidebarMenu = [
         heading: 'Người dùng',
         icon: 'fas fa-times-octagon',
         route: '/user-statistic',
+      },
+    ],
+  },
+  {
+    key: 'GeneralReport',
+    heading: 'Báo cáo',
+    icon: 'fas fa-book',
+    route: '/report',
+    subMenu: [
+      {
+        key: 'ReportTemplate',
+        heading: 'Report template',
+        icon: 'fas fa-drone-alt',
+        route: '/template-report',
       },
     ],
   },

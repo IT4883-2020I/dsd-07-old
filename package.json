@@ -8,6 +8,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.3.0",
     "antd": "^4.6.6",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
@@ -15,6 +16,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "react-to-print": "^2.11.0",
     "recharts": "^1.8.5",
     "styled-components": "^5.1.1"
   },

@@ -36,7 +36,7 @@ function Drone() {
       <Breadcrumb
         style={{ marginBottom: 16, marginTop: 8, fontSize: 18, fontWeight: 500 }}
       >
-        <Breadcrumb.Item>Báo cáo thống kê</Breadcrumb.Item>
+        <Breadcrumb.Item>Thống kê</Breadcrumb.Item>
         <Breadcrumb.Item>Drone</Breadcrumb.Item>
       </Breadcrumb>
       <Row>

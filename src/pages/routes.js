@@ -2,6 +2,11 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Dashboard from './Dashboard';
+import StatisticDashboard from './Statistic/Dashboard';
+import StatisticDrone from './Statistic/Drone';
+import StatisticPayload from './Statistic/Payload';
+import StatisticProblem from './Statistic/Problem';
+import StatisticUser from './Statistic/User';
 
 export const routes = [
   {
@@ -23,7 +28,7 @@ export const routes = [
   },
   {
     path: '/drone-statistic',
-    component: () => <div>Thống kê drone</div>,
+    component: StatisticDrone,
   },
   {
     path: '/flight-hub',
@@ -48,6 +53,26 @@ export const routes = [
   {
     path: '/statistic',
     component: () => <div>Báo cáo thống kê</div>,
+  },
+  {
+    path: '/dashboard-statistic',
+    component: StatisticDashboard,
+  },
+  {
+    path: '/drone-statistic',
+    component: StatisticDrone,
+  },
+  {
+    path: '/payload-statistic',
+    component: StatisticPayload,
+  },
+  {
+    path: '/trouble-statistic',
+    component: StatisticProblem,
+  },
+  {
+    path: '/user-statistic',
+    component: StatisticUser,
   },
   {
     path: '/problems',

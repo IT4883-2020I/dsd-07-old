@@ -4,6 +4,7 @@ import { Row, Col, Input } from 'antd';
 export default function HeaderSection({
   section,
   onSectionChange,
+  formatted,
 }) {
   const [inputValues, setInputValues] = useState({
     company_name: null,
@@ -23,7 +24,7 @@ export default function HeaderSection({
   }, []);
 
   useEffect(() => {
-    onSectionChange({
+    onSectionChange && onSectionChange({
       uniqueId: section.uniqueId,
       keys: inputValues,
     });
@@ -37,58 +38,82 @@ export default function HeaderSection({
       <Row style={{ flexDirection: 'row', display: ' flex', justifyContent: 'space-between' }}>
         <Col span={10}>
           <h1 style={{ textTransform: 'uppercase' }} className="u-fontBold">
-            <Input
-              name="company_name"
-              onChange={onInputChange}
-              style={{ width: 300, textTransform: 'uppercase' }}
-              placeholder="Tên công ty"
-              className="u-fontBold"
-            />
+            {formatted ? (
+              section?.keys['company_name']
+            ) : (
+              <Input
+                name="company_name"
+                onChange={onInputChange}
+                style={{ width: 300, textTransform: 'uppercase' }}
+                placeholder="Tên công ty"
+                className="u-fontBold"
+              />
+            )}
           </h1>
           <div className="u-fontBold">------------------</div>
           <div style={{ marginTop: '10px' }}>
             <span>Số</span>
             &nbsp;
-            <Input
-              name="doc_number"
-              onChange={onInputChange}
-              style={{ width: 100 }}
-            />
+            {formatted ? (
+              section?.keys['doc_number']
+            ) : (
+              <Input
+                name="doc_number"
+                onChange={onInputChange}
+                style={{ width: 100 }}
+              />
+            )}
           </div>
         </Col>
         <Col span={10}>
           <h1 className="u-fontBold">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h1>
           <h1 className="u-fontBold">Độc lập - Tự do - Hạnh phúc</h1>
           <div style={{ fontStyle: 'italic' }}>
-            <Input
-              name="city"
-              onChange={onInputChange}
-              style={{ width: 80 }}
-              placeholder="Thành phố"
-            />
+            {formatted ? (
+              section?.keys['city']
+            ) : (
+              <Input
+                name="city"
+                onChange={onInputChange}
+                style={{ width: 80 }}
+                placeholder="Thành phố"
+              />
+            )}
             <span>, ngày</span>
             &nbsp;
-            <Input
-              name="date"
-              onChange={onInputChange}
-              style={{ width: 40 }}
-            />
+            {formatted ? (
+              section?.keys['date']
+            ) : (
+              <Input
+                name="date"
+                onChange={onInputChange}
+                style={{ width: 40 }}
+              />
+            )}
             &nbsp;
             <span>tháng</span>
             &nbsp;
-            <Input
-              name="month"
-              onChange={onInputChange}
-              style={{ width: 40 }}
-            />
+            {formatted ? (
+              section?.keys['month']
+            ) : (
+              <Input
+                name="month"
+                onChange={onInputChange}
+                style={{ width: 40 }}
+              />
+            )}
             &nbsp;
             <span>năm</span>
             &nbsp;
-            <Input
-              name="year"
-              onChange={onInputChange}
-              style={{ width: 60 }}
-            />
+            {formatted ? (
+              section?.keys['year']
+            ) : (
+              <Input
+                name="year"
+                onChange={onInputChange}
+                style={{ width: 60 }}
+              />
+            )}
             </div>
         </Col>
       </Row>

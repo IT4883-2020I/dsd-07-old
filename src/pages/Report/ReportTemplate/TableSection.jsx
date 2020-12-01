@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function TableSection({
   section,
   onSectionChange,
+  formatted,
 }) {
   const [data, setData] = useState([]);
   const onDeleteRow = useCallback((key) => {
@@ -28,20 +29,26 @@ export default function TableSection({
         title: header,
         dataIndex: header,
         render: (text, record) => (
-          <Input
-            name={header}
-            onChange={(e) => onCellChange(e, record.key)}
-          />
+          formatted ? (
+            section.keys[header]
+          ) : (
+            <Input
+              name={header}
+              onChange={(e) => onCellChange(e, record.key)}
+            />
+          )
         ),
       })),
-      {
-        dataIndex: '_default_delete',
-        render: (text, record) => (
-          <a onClick={() => onDeleteRow(record.key)}>Xóa</a>
-        ),
-      },
+      ...(formatted ? [] : [
+        {
+          dataIndex: '_default_delete',
+          render: (text, record) => (
+            <a onClick={() => onDeleteRow(record.key)}>Xóa</a>
+          ),
+        },
+      ])
     ];
-  }, [section.headers, onDeleteRow, onCellChange]);
+  }, [section.headers, onDeleteRow, onCellChange, formatted]);
 
   const onClickAddRow = useCallback(() => {
     setData((data) => ([
@@ -56,7 +63,7 @@ export default function TableSection({
   }, [columns]);
 
   useEffect(() => {
-    onSectionChange({
+    onSectionChange && onSectionChange({
       uniqueId: section.uniqueId,
       records: data,
     });
@@ -66,14 +73,15 @@ export default function TableSection({
 
   return (
     <>
-      <Button
-        onClick={onClickAddRow}
-        type="primary"
-        style={{ marginBottom: 16 }}
-      >
-        Thêm dòng +
-      </Button>
-
+      {!formatted && (
+        <Button
+          onClick={onClickAddRow}
+          type="primary"
+          style={{ marginBottom: 16 }}
+        >
+          Thêm dòng +
+        </Button>
+      )}
       <Table
         size="small"
         columns={columns}

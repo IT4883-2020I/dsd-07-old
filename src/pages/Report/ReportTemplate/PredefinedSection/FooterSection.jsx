@@ -4,6 +4,7 @@ import { Row, Col, Input } from 'antd';
 export default function FooterSection({
   section,
   onSectionChange,
+  formatted,
 }) {
   const [inputValues, setInputValues] = useState({
     author: null,
@@ -19,7 +20,7 @@ export default function FooterSection({
   }, []);
 
   useEffect(() => {
-    onSectionChange({
+    onSectionChange && onSectionChange({
       uniqueId: section.uniqueId,
       keys: inputValues,
     });
@@ -36,12 +37,16 @@ export default function FooterSection({
             Người phê duyệt
           </h1>
           <div style={{ marginTop: 100 }}>
-            <Input
-              name="reviewer"
-              onChange={onInputChange}
-              style={{ width: 200, textTransform: 'uppercase' }}
-              className="u-fontBold"
-            />
+            {formatted ? (
+              section?.keys['reviewer']
+            ) : (
+              <Input
+                name="reviewer"
+                onChange={onInputChange}
+                style={{ width: 200, textTransform: 'uppercase' }}
+                className="u-fontBold"
+              />
+            )}
           </div>
         </Col>
         <Col span={4} />
@@ -50,12 +55,16 @@ export default function FooterSection({
             Người lập báo cáo
           </h1>
           <div style={{ marginTop: 100 }}>
-            <Input
-              name="author"
-              onChange={onInputChange}
-              style={{ width: 200, textTransform: 'uppercase' }}
-              className="u-fontBold"
-            />
+            {formatted ? (
+              section?.keys['author']
+            ) : (
+              <Input
+                name="author"
+                onChange={onInputChange}
+                style={{ width: 200, textTransform: 'uppercase' }}
+                className="u-fontBold"
+              />
+            )}
           </div>
         </Col>
       </Row>

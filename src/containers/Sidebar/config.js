@@ -80,6 +80,12 @@ export const sidebarMenu = [
         route: '/drone-statistic',
       },
       {
+        key: 'DroneGeneral',
+        heading: 'Drone tổng quan',
+        icon: 'fas fa-drone-alt',
+        route: '/drone-general-statistic',
+      },
+      {
         key: 'PayloadStatistic',
         heading: 'Payload',
         icon: 'fas fa-layer-group',

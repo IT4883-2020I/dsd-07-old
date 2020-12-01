@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import StatisticDashboard from './Statistic/Dashboard';
 import StatisticDrone from './Statistic/Drone';
+import { DroneGeneral } from './Statistic/drone_general/DroneGeneral';
 import StatisticPayload from './Statistic/Payload';
 import StatisticProblem from './Statistic/Problem';
 import StatisticUser from './Statistic/User';
@@ -61,6 +62,10 @@ export const routes = [
   {
     path: '/drone-statistic',
     component: StatisticDrone,
+  },
+  {
+    path: '/drone-general-statistic',
+    component: DroneGeneral,
   },
   {
     path: '/payload-statistic',

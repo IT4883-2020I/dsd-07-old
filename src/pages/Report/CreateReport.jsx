@@ -92,7 +92,6 @@ export default function CreateReport() {
       {currentTemplateId && (
         <ReportTemplate
           currentTemplateId={currentTemplateId}
-          editting={true}
           setReport={setReport}
         />
       )}

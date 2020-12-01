@@ -8,6 +8,7 @@ import matchInputs from './Inputify/utils/matchInputs';
 export default function TextKeySection({
   section,
   onSectionChange,
+  formatted,
 }) {
   const [inputValues, setInputValues] = useState({});
   const Tag = getFormatTagName(section.format);
@@ -30,6 +31,15 @@ export default function TextKeySection({
     />
   ), [onInputChange]);
 
+  const componentFormattedDecorator = useCallback((decoratedInput, key) => {
+    const formattedText = Object.keys(inputValues).reduce((finalString, currentKey) => {
+      if (decoratedInput === currentKey) {
+        return inputValues[currentKey];
+      }
+    }, decoratedInput);
+    return formattedText;
+  }, [onInputChange]);
+
   useEffect(() => {
     if (inputs?.length > 0) {
       setInputValues(inputs.reduce((finalResult, currentInput) => ({
@@ -39,18 +49,8 @@ export default function TextKeySection({
     }
   }, [inputs]);
 
-  // useEffect(() => {
-  //   const formattedText = Object.keys(inputValues).reduce((finalString, currentKey) => {
-  //     return finalString.replaceAll(currentKey, inputValues[currentKey]);
-  //   }, section.text);
-  //   onSectionChange({
-  //     uniqueId: section.uniqueId,
-  //     text: formattedText,
-  //   });
-  // }, [inputValues, section.uniqueId]);
-
   useEffect(() => {
-    onSectionChange({
+    onSectionChange && onSectionChange({
       uniqueId: section.uniqueId,
       keys: inputValues,
     });
@@ -62,7 +62,7 @@ export default function TextKeySection({
     >
       <Inputify
         matchDecorator={() => inputs}
-        componentDecorator={componentDecorator}
+        componentDecorator={formatted ? componentFormattedDecorator : componentDecorator}
       >
         {section.text}
       </Inputify>

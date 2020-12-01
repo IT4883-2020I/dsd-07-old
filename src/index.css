@@ -44,3 +44,33 @@ body {
 .ant-modal-title {
   font-size: 1.25em !important;
 }
+
+.u-shadow {
+  box-shadow: 0 2px 8px rgba(0,0,0,.16);
+}
+
+.u-rounded {
+  border-radius: 8px;
+}
+
+.u-textCenter {
+  text-align: center;
+}
+
+.u-fontBold {
+  font-weight: bold;
+}
+
+.u-reportCard {
+  font-family: serif;
+  font-size: 16px;
+}
+
+.u-formatHeader {
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 32px;
+  margin-bottom: 32px;
+}

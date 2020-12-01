@@ -106,10 +106,22 @@ export const sidebarMenu = [
     route: '/report',
     subMenu: [
       {
-        key: 'ReportTemplate',
-        heading: 'Report template',
+        key: 'CreateReport',
+        heading: 'Tạo báo cáo',
         icon: 'fas fa-drone-alt',
-        route: '/template-report',
+        route: '/create-report',
+      },
+      {
+        key: 'ViewReport',
+        heading: 'Xem báo cáo',
+        icon: 'fas fa-drone-alt',
+        route: '/view-report',
+      },
+      {
+        key: 'ManageReportTemplate',
+        heading: 'Quản lý mẫu báo cáo',
+        icon: 'fas fa-drone-alt',
+        route: '/manage-report-template',
       },
     ],
   },

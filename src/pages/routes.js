@@ -2,12 +2,14 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Dashboard from './Dashboard';
-import ReportTemplate from './Report/index';
 import StatisticDashboard from './Statistic/Dashboard';
 import StatisticDrone from './Statistic/Drone';
 import StatisticPayload from './Statistic/Payload';
 import StatisticProblem from './Statistic/Problem';
 import StatisticUser from './Statistic/User';
+import CreateReport from './Report/CreateReport';
+import ViewReport from './Report/ViewReport';
+import ManageReportTemplate from './Report/ManageReportTemplate';
 
 export const routes = [
     {
@@ -80,8 +82,16 @@ export const routes = [
         component: () => <div>Thống kê</div>,
     },
     {
-        path: '/template-report',
-        component: ReportTemplate,
+        path: '/create-report',
+        component: CreateReport,
+    },
+    {
+        path: '/view-report',
+        component: ViewReport,
+    },
+    {
+        path: '/manage-report-template',
+        component: ManageReportTemplate,
     },
     {
         path: '/problems',

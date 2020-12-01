@@ -16,9 +16,13 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "react-singleton-hook": "^3.0.142",
     "react-to-print": "^2.11.0",
     "recharts": "^1.8.5",
-    "styled-components": "^5.1.1"
+    "string.prototype.matchall": "^4.0.3",
+    "styled-components": "^5.1.1",
+    "uuid": "^8.3.1",
+    "with-default-props": "^0.2.1"
   },
   "browserslist": {
     "production": [

@@ -14,6 +14,7 @@ export default function ReportViewer({
   const [currentReport, setCurrentReport] = useState(null);
 
   useEffect(() => {
+    setCurrentReport(null);
     Axios.get(`https://dsd07.herokuapp.com/api/user-reports/${reportId}`, {
       headers: {
         'Access-Control-Allow-Origin': true,
@@ -73,7 +74,14 @@ export default function ReportViewer({
   return (
     <Card className="u-shadow u-rounded u-reportCard">
       {!currentReport && <Spin size="large" />}
-      {currentReport?.sections?.map((section) => renderSection(section))}
+      {currentReport && (
+        <h1>Bạn đang xem báo cáo: <span>{`${currentReport.name}`}</span></h1>
+      )}
+      {currentReport?.sections && (
+        <div className="u-reportContainer">
+          {currentReport.sections.map((section) => renderSection(section))}
+        </div>
+      )}
     </Card>
   );
 }

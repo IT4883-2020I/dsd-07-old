@@ -110,7 +110,11 @@ export default function ReportTemplate({
   return (
     <Card className="u-shadow u-rounded u-reportCard">
       {!currentTemplate && <Spin size="large" />}
-      {currentTemplate?.sections?.map((section) => renderSection(section))}
+      {currentTemplate?.sections && (
+        <div className="u-reportContainer">
+          {currentTemplate.sections.map((section) => renderSection(section))}
+        </div>
+      )}
     </Card>
   );
 }

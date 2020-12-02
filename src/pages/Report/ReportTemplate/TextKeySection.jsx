@@ -32,13 +32,13 @@ export default function TextKeySection({
   ), [onInputChange]);
 
   const componentFormattedDecorator = useCallback((decoratedInput, key) => {
-    const formattedText = Object.keys(inputValues).reduce((finalString, currentKey) => {
-      if (decoratedInput === currentKey) {
-        return inputValues[currentKey];
+    const formattedText = Object.keys(section.keys).reduce((finalString, currentKey) => {
+      if (decoratedInput === `$${currentKey}`) {
+        return section.keys[currentKey];
       }
     }, decoratedInput);
     return formattedText;
-  }, [onInputChange]);
+  }, [section]);
 
   useEffect(() => {
     if (inputs?.length > 0) {

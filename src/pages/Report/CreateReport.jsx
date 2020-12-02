@@ -9,6 +9,20 @@ const { Option } = Select;
 const role = 'MANAGER';
 // const role = 'USER';
 
+const processDataToAPI = (report) => {
+  return {
+    ...report,
+    reviewerId: 4,
+    name: `[BÁO CÁO] ${report.type}`,
+    sections: report.sections.map((section) => {
+      const { uniqueId, ...rest } = section;
+      return ({
+        ...rest,
+      });
+    })
+  }
+}
+
 export default function CreateReport() {
   const [report, setReport] = useState(null);
   const [currentTemplateId, setCurrentTemplateId] = useState(null);
@@ -34,11 +48,7 @@ export default function CreateReport() {
   }, []);
 
   const handleSubmitReport = useCallback(() => {
-    Axios.post('https://dsd07.herokuapp.com/api/user-reports', {
-      ...report,
-      reviewerId: 4,
-      name: `[BÁO CÁO] ${report.type}`,
-    }, {
+    Axios.post('https://dsd07.herokuapp.com/api/user-reports', processDataToAPI(report), {
       headers: {
         'Access-Control-Allow-Origin': true,
         'api-token': '4e3fe3463afd3a705c0be7ec2322c335',

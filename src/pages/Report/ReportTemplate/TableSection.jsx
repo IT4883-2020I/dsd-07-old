@@ -2,6 +2,27 @@ import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { Table, Input, Button } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
 
+const processDataToAPI = (data) => {
+  return data.map((record) => {
+    return Object.keys(record).reduce((currentArray, key) => {
+      if (key === 'key') return currentArray;
+      return [
+        ...currentArray,
+        record[key],
+      ];
+    }, []);
+  });
+}
+
+const processDataFromAPI = (records, headers) => {
+  return records.map((record) => {
+    return headers.reduce((finalResult, header, index) => ({
+      ...finalResult,
+      [header]: record[index],
+    }), {});
+  });
+}
+
 export default function TableSection({
   section,
   onSectionChange,
@@ -25,12 +46,12 @@ export default function TableSection({
     if (!(section.headers && section.headers.length > 0)) return [];
 
     return [
-      ...section.headers.map((header) => ({
+      ...section.headers.map((header, headerIndex) => ({
         title: header,
         dataIndex: header,
-        render: (text, record) => (
+        render: (value, record, index) => (
           formatted ? (
-            section.keys[header]
+            section.records[index][headerIndex]
           ) : (
             <Input
               name={header}
@@ -65,9 +86,15 @@ export default function TableSection({
   useEffect(() => {
     onSectionChange && onSectionChange({
       uniqueId: section.uniqueId,
-      records: data,
+      records: processDataToAPI(data),
     });
   }, [data, section.uniqueId]);
+
+  useEffect(() => {
+    if (formatted) {
+      setData(processDataFromAPI(section.records, section.headers));
+    }
+  }, [section, formatted])
 
   if (columns.length === 0) return null;
 

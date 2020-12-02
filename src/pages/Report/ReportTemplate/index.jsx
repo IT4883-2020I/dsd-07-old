@@ -9,7 +9,7 @@ import TextSection from './TextSection';
 import TextKeySection from './TextKeySection';
 import TableSection from './TableSection';
 
-const processData = (data) => {
+const processDataFromAPI = (data) => {
   if (data.sections && Array.isArray(data.sections)) {
     return ({
       ...data,
@@ -56,7 +56,7 @@ export default function ReportTemplate({
     })
       .then(response => {
         if (response.data.success) {
-          setCurrentTemplate(processData(response.data.data))
+          setCurrentTemplate(processDataFromAPI(response.data.data))
         }
       }).catch(err => {
         console.error(err);

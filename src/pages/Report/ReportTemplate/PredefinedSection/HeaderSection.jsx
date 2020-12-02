@@ -36,7 +36,7 @@ export default function HeaderSection({
       className="u-textCenter"
     >
       <Row style={{ flexDirection: 'row', display: ' flex', justifyContent: 'space-between' }}>
-        <Col span={10}>
+        <Col span={8}>
           <h1 style={{ textTransform: 'uppercase' }} className="u-fontBold">
             {formatted ? (
               section?.keys['company_name']
@@ -44,7 +44,7 @@ export default function HeaderSection({
               <Input
                 name="company_name"
                 onChange={onInputChange}
-                style={{ width: 300, textTransform: 'uppercase' }}
+                style={{ width: 250, textTransform: 'uppercase' }}
                 placeholder="Tên công ty"
                 className="u-fontBold"
               />
@@ -65,7 +65,7 @@ export default function HeaderSection({
             )}
           </div>
         </Col>
-        <Col span={10}>
+        <Col span={16}>
           <h1 className="u-fontBold">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h1>
           <h1 className="u-fontBold">Độc lập - Tự do - Hạnh phúc</h1>
           <div style={{ fontStyle: 'italic' }}>
